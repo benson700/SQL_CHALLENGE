@@ -1,0 +1,26 @@
+
+          SAQILA
+
+USE Sakila;  SELECT last_name  FROM sakila.actor  WHERE first_Name = 'John';
+ SELECT * FROM actor WHERE last_name = 'neeson';
+ SELECT * FROM actor WHERE mod(actor_id,10) = 0;
+ SELECT DESCRIPTION FROM film_text WHERE film_id = 100;
+ SELECT * FROM film WHERE rating = "R";
+  SELECT * FROM film WHERE rating != "R";
+ SELECT* FROM film ORDER BY length ASC LIMIT 10;
+ SELECT title, length from film ORDER BY length DESC;
+ SELECT* FROM film 	WHERE special_features = 'Deleted Scenes';
+SELECT last_name FROM actor  GROUP BY last_name HAVING COUNT(DISTINCT last_name) ORDER BY last_name DESC;
+SELECT first_name, last_name from actor
+Inner JOIN film_actor ON actor.actor_id = film_actor.actor_id
+GROUP BY actor.actor_id
+ORDER BY count(film_actor.actor_id) DESC LIMIT 1;
+SELECT AVG (length) from film;
+
+SELECT category.name, avg(length) FROM film
+JOIN film_category using (film_id)
+JOIN category using (category_id)
+GROUP BY category.name
+ORDER BY AVG(length) DESC;
+SELECT COUNT(title) AS No_of_film_released from film WHERE release_year = 2010;
+
